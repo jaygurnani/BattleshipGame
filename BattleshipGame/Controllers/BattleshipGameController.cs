@@ -22,7 +22,7 @@ namespace BattleshipGame.Controllers
         [HttpPost]
         public IActionResult CreateGame()
         {
-           
+            return Ok();
         }
     }
 }
