@@ -24,7 +24,7 @@ namespace BattleshipGame.Models
         [JsonProperty("orientation")]
         public OrientationType orientation { get; set; }
 
-        [JsonProperty("player1Or2")]
-        public Player1Or2 player1Or2 { get; set; }
+        [JsonProperty("playerId")]
+        public PlayerId playerId { get; set; }
     }
 }

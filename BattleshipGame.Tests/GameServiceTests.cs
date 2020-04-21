@@ -49,6 +49,21 @@ namespace BattleshipGame.Tests
             Assert.AreEqual(shipId, currentSquare.GetSquareContent());
         }
 
+        [Test]
+        public void Can_Add_Ship_To_Empty_Square_Unsuccessfully()
+        {
+            // Given
+            int startingRow = 0;
+            int startingColumn = 1;
+            int shipId = 10;
+
+            // When
+            _gameService.AddShip(shipId, 3, startingRow, startingColumn, OrientationType.Horizontal, _player);
+
+            // Then
+            Assert.Throws<ApplicationException>(() => _gameService.AddShip(shipId, 3, startingRow, startingColumn, OrientationType.Horizontal, _player));
+        }
+
         [TestCase(7, 7, 1, 7, OrientationType.Horizontal)]
         [TestCase(7, 7, 1, 7, OrientationType.Vertical)]
         [TestCase(0, 0, 1, 15, OrientationType.Vertical)]
@@ -86,7 +101,7 @@ namespace BattleshipGame.Tests
         }
 
         [Test]
-        public void Can_Attack_Ship_And_Win()
+        public void Can_Attack_Ship_And_Win_SingleShip()
         {
             // Given
             int row = 1;
@@ -102,6 +117,26 @@ namespace BattleshipGame.Tests
             Assert.IsTrue(result1);
             Assert.IsTrue(result2);
             Assert.IsTrue(result3);
+            Assert.IsTrue(_player.HasPlayerLost());
+        }
+
+        public void Can_Attack_Ship_And_Win_MultipleShips()
+        {
+            // Given
+            _gameService.AddShip(1, 1, 1, 1, OrientationType.Horizontal, _player);
+            _gameService.AddShip(2, 1, 2, 2, OrientationType.Horizontal, _player);
+
+
+            // When
+            var result1 = _gameService.AttackSquare(1, 1, _player);
+            var result2 = _gameService.AttackSquare(2, 2, _player);
+
+
+            // Then
+            Assert.IsTrue(result1);
+            Assert.IsFalse(_player.HasPlayerLost());
+
+            Assert.IsTrue(result2);
             Assert.IsTrue(_player.HasPlayerLost());
         }
 

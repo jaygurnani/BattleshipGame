@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "5524c03f-87f6-4699-acdb-eb8f2ae5b186",
+		"name": "BattleshipGame",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateGame",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"player1Name\": \"Alice\",\n\t\"player2Name\": \"Bob\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:61881/BattleshipGame/CreateGame",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61881",
+					"path": [
+						"BattleshipGame",
+						"CreateGame"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddShip",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"shipId\": 1,\n\t\"lengthOrWidth\": 4,\n\t\"startingRow\": 1,\n\t\"startingColumn\": 1,\n\t\"orientation\": 1,\n\t\"playerId\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:61881/BattleshipGame/AddShip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61881",
+					"path": [
+						"BattleshipGame",
+						"AddShip"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AttackShip",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"row\": 4,\n\t\"column\": 1,\n\t\"playerToAttack\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:61881/BattleshipGame/AttackShip",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "61881",
+					"path": [
+						"BattleshipGame",
+						"AttackShip"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

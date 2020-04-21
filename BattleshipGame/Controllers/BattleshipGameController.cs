@@ -17,7 +17,7 @@ namespace BattleshipGame.Controllers
     {
         private readonly Logger _logger;
         private readonly IGameService _gameService;
-        private GameState _gameState;
+        private static GameState _gameState;
 
         public BattleshipGame(IGameService gameService)
         {
@@ -46,7 +46,7 @@ namespace BattleshipGame.Controllers
                 throw new ApplicationException(msg);
             }
 
-            Player currentPlayer = null;
+            Player currentPlayer;
             if(request.playerId == PlayerId.Player1)
             {
                 currentPlayer = _gameState.player1;
@@ -71,7 +71,7 @@ namespace BattleshipGame.Controllers
                 throw new ApplicationException(msg);
             }
 
-            Player playerToAttack = null;
+            Player playerToAttack;
             if (request.playerToAttack == PlayerId.Player1)
             {
                 playerToAttack = _gameState.player1;
@@ -89,7 +89,6 @@ namespace BattleshipGame.Controllers
 
             return Ok(result);
         }
-
 
     }
 }
