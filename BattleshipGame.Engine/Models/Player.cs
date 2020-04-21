@@ -17,6 +17,10 @@ namespace BattleshipGame.Engine.Models
             Ships = new Dictionary<int, Ship>();
         }
 
+        /// <summary>
+        /// If the player has no more ships in the dictionary then the player has lost
+        /// </summary>
+        /// <returns></returns>
         public bool HasPlayerLost()
         {
             if (Ships.Count == 0)

@@ -25,6 +25,11 @@ namespace BattleshipGame.Controllers
             _gameService = gameService;
         }
 
+        /// <summary>
+        /// Method to create a new board
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("CreateGame")]
         public IActionResult CreateGame([FromBody] CreateGameRequest request)
@@ -35,6 +40,11 @@ namespace BattleshipGame.Controllers
             return Ok();
         }
         
+        /// <summary>
+        /// Method to Add a ship to a particular board
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("AddShip")]
         public IActionResult AddShip([FromBody] AddShipRequest request)
@@ -59,7 +69,11 @@ namespace BattleshipGame.Controllers
             return Ok();
         }
 
-
+        /// <summary>
+        /// Method to attack the ship
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("AttackShip")]
         public IActionResult AttackShip([FromBody] AttackSquareRequest request)

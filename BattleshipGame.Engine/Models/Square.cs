@@ -29,6 +29,9 @@ namespace BattleshipGame.Engine.Models
             return false;
         }
 
+        /// <summary>
+        /// Removes the content of a ship
+        /// </summary>
         public void RemoveContent()
         {
             _shipId = null;

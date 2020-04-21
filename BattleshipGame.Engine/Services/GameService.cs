@@ -9,6 +9,15 @@ namespace BattleshipGame.Engine.Services
 {
     public class GameService : IGameService
     {
+        /// <summary>
+        /// Adds a ship to a player gameboard
+        /// </summary>
+        /// <param name="shipId"></param>
+        /// <param name="lengthOrWidth"></param>
+        /// <param name="startingRow"></param>
+        /// <param name="startingColumn"></param>
+        /// <param name="orientation"></param>
+        /// <param name="player"></param>
         public void AddShip(int shipId, int lengthOrWidth, int startingRow, int startingColumn, OrientationType orientation, Player player)
         {
             IsValidShipAddition(lengthOrWidth, startingRow, startingColumn, orientation);
@@ -93,6 +102,11 @@ namespace BattleshipGame.Engine.Services
             return true;
         }
 
+        /// <summary>
+        /// Basic validation
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
         public void IsValidateRowsAndColumns(int row, int column)
         {
             if (row > 10 || column > 10)
@@ -101,6 +115,13 @@ namespace BattleshipGame.Engine.Services
             }
         }
 
+        /// <summary>
+        /// Basic validation
+        /// </summary>
+        /// <param name="lengthOrWidth"></param>
+        /// <param name="startingRow"></param>
+        /// <param name="startingColumn"></param>
+        /// <param name="orientation"></param>
         public void IsValidShipAddition(int lengthOrWidth, int startingRow, int startingColumn, OrientationType orientation)
         {
             IsValidateRowsAndColumns(startingRow, startingColumn);

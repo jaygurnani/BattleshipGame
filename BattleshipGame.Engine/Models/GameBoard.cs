@@ -8,6 +8,9 @@ namespace BattleshipGame.Engine.Models
     {
         public Square[,] GameBoardArray { get; set; }
 
+        /// <summary>
+        /// Creates a new 10 x 10 array
+        /// </summary>
         public GameBoard()
         {
             GameBoardArray = new Square[10, 10];
@@ -22,11 +25,23 @@ namespace BattleshipGame.Engine.Models
             }
         }
 
+        /// <summary>
+        /// Adds an square to the array
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="square"></param>
         public void AddItem(int row, int column, Square square)
         {
             GameBoardArray[row, column] = square;
         }
 
+        /// <summary>
+        /// Gets the square in the array
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <returns></returns>
         public Square GetItem(int row, int column)
         {
             return GameBoardArray[row, column];
