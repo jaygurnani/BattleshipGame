@@ -29,11 +29,16 @@ namespace BattleshipGame.Engine.Models
             return false;
         }
 
+        public void RemoveContent()
+        {
+            _shipId = null;
+        }
+
         /// <summary>
         /// Return null if nothing there or the Ship id if there is something there
         /// </summary>
         /// <returns></returns>
-        public int? GetCurrentShip()
+        public int? GetSquareContent()
         {
             return _shipId;
         }

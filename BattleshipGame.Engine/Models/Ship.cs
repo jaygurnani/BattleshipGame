@@ -21,5 +21,4 @@ namespace BattleshipGame.Engine.Models
         Horizontal,
         Veritcal
     }
-
 }
