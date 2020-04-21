@@ -10,6 +10,12 @@ namespace BattleshipGame.Engine.Services
     {
         public void AddShip(int shipId, int lengthOrWidth, int startingRow, int startingColumn, OrientationType orientation, Player player)
         {
+            IsValidateRowsAndColumns(startingRow, startingRow);
+            if (lengthOrWidth > 10)
+            {
+                throw new ApplicationException($"Ship {shipId} is too large to fit on the board");
+            }
+
             // Check to see if we have it in our dictionary
             if (player.Ships.ContainsKey(shipId))
             {
@@ -55,6 +61,8 @@ namespace BattleshipGame.Engine.Services
 
         public bool AttackSquare(int row, int column, Player player)
         {
+            IsValidateRowsAndColumns(row, column);
+
             // Get the current square
             var currentSquare = player.PlayerGameBoard.GetItem(row, column);
             var currentSquareContent = currentSquare.GetSquareContent();
@@ -79,6 +87,14 @@ namespace BattleshipGame.Engine.Services
             currentSquare.RemoveContent();
             player.PlayerGameBoard.AddItem(row, column, currentSquare);
             return true;
+        }
+
+        public void IsValidateRowsAndColumns(int row, int column)
+        {
+            if (row > 10 || column > 10)
+            {
+                throw new ApplicationException($"Input row: {row} and column {column} is not valid");
+            }
         }
     }
 }
