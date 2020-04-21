@@ -1,6 +1,7 @@
 ﻿using BattleshipGame.Engine.Models;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -10,11 +11,7 @@ namespace BattleshipGame.Engine.Services
     {
         public void AddShip(int shipId, int lengthOrWidth, int startingRow, int startingColumn, OrientationType orientation, Player player)
         {
-            IsValidateRowsAndColumns(startingRow, startingRow);
-            if (lengthOrWidth > 10)
-            {
-                throw new ApplicationException($"Ship {shipId} is too large to fit on the board");
-            }
+            IsValidShipAddition(lengthOrWidth, startingRow, startingColumn, orientation);
 
             // Check to see if we have it in our dictionary
             if (player.Ships.ContainsKey(shipId))
@@ -95,6 +92,34 @@ namespace BattleshipGame.Engine.Services
             {
                 throw new ApplicationException($"Input row: {row} and column {column} is not valid");
             }
+        }
+
+        public void IsValidShipAddition(int lengthOrWidth, int startingRow, int startingColumn, OrientationType orientation)
+        {
+            IsValidateRowsAndColumns(startingRow, startingColumn);
+            
+            if (lengthOrWidth > 10)
+            {
+                throw new ApplicationException($"Ship is too large to fit on the board");
+            }
+
+            if (orientation == OrientationType.Horizontal)
+            {
+                var endLength = startingRow + lengthOrWidth;
+                if (endLength > 10)
+                {
+                    throw new ApplicationException($"Ship will not fit on the board horizonatally");
+                }
+            } 
+            else
+            {
+                var endLength = startingColumn + lengthOrWidth;
+                if (endLength > 10)
+                {
+                    throw new ApplicationException($"Ship will not fit on the board vertically");
+                }
+            }
+            
         }
     }
 }

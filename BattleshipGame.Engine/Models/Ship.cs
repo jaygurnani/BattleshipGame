@@ -19,6 +19,6 @@ namespace BattleshipGame.Engine.Models
     public enum OrientationType
     {
         Horizontal,
-        Veritcal
+        Vertical
     }
 }
