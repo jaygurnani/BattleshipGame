@@ -17,7 +17,7 @@ namespace BattleshipGame.Engine.Models
             Ships = new Dictionary<int, Ship>();
         }
 
-        public bool HasPlayerWon()
+        public bool HasPlayerLost()
         {
             if (Ships.Count == 0)
             {

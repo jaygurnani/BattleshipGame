@@ -58,5 +58,52 @@ namespace BattleshipGame.Tests
             // Given When Then
             Assert.Throws<ApplicationException>(() => _gameService.AddShip(shipId, lengthOrWidth, startingRow, startingColumn, orientation, _player));
         }
+
+        [Test]
+        public void Can_Attack_Empty_Space()
+        {
+            // Given When
+            var result = _gameService.AttackSquare(1, 1, _player);
+
+            // Then
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void Can_Attack_Ship()
+        {
+            // Given
+            int row = 1;
+            int columm = 1;
+            _gameService.AddShip(1, 3, row, columm, OrientationType.Horizontal, _player);
+
+            // When
+            var result = _gameService.AttackSquare(1, 1, _player);
+
+            // Then
+            Assert.IsTrue(result);
+            Assert.IsFalse(_player.HasPlayerLost());
+        }
+
+        [Test]
+        public void Can_Attack_Ship_And_Win()
+        {
+            // Given
+            int row = 1;
+            int columm = 1;
+            _gameService.AddShip(1, 3, row, columm, OrientationType.Horizontal, _player);
+
+            // When
+            var result1 = _gameService.AttackSquare(1, 1, _player);
+            var result2 = _gameService.AttackSquare(1, 2, _player);
+            var result3 = _gameService.AttackSquare(1, 3, _player);
+
+            // Then
+            Assert.IsTrue(result1);
+            Assert.IsTrue(result2);
+            Assert.IsTrue(result3);
+            Assert.IsTrue(_player.HasPlayerLost());
+        }
+
     }
 }

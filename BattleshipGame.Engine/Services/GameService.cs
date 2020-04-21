@@ -56,6 +56,13 @@ namespace BattleshipGame.Engine.Services
             }
         }
 
+        /// <summary>
+        /// Return false if miss, returns true if hit
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public bool AttackSquare(int row, int column, Player player)
         {
             IsValidateRowsAndColumns(row, column);
