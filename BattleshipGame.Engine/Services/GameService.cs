@@ -89,6 +89,9 @@ namespace BattleshipGame.Engine.Services
             var currentShip = player.Ships[shipId];
             currentShip.Hits = currentShip.Hits + 1;
 
+            // Update the dictionary of ships
+            player.Ships[shipId] = currentShip;
+
             // If it has been sunk
             if (currentShip.IsSunk())
             {
