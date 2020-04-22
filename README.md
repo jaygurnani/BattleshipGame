@@ -4,7 +4,7 @@
 - BattleshipGame.Engine - Class library for the Game Engine
 - BattleshipGame.Tests - NUnit Test Project
 
-## Design Considerations
+## Design
 - An 2d array is used to hold the game board. This allows for quick access
 - Where possible game states are passed in rather than stored in a global context. This allows for more testable code.
 - Interfaces are used for the Game Service.
@@ -13,10 +13,11 @@
 - Private variables are read only.
 - Basic validation is done to ensure invalid data cannot be passed.
 - The user needs to keep track of the shipId when they add a ship as well as playing user id.
+- When calling the API, PlayerId, orientations and rows and columns are 0-indexed rather than 1-indexed.
 
 ## Testing
 There are 2 mechanism to test the application:
-1. Unit tests
+1. Unit tests (BattleshipGame.Tests Project)
 These are the following unit tests that are run:
     - Correct Game board setup
     - Can ship be added to a square successfully/unsuccessfully
@@ -24,7 +25,7 @@ These are the following unit tests that are run:
     - Can attack an empty/full space
     - Win states are tested
 
-2. Postman API Tests
+2. Postman API Tests (BattleshipGame.postman_collection.json)
 Postman tests have the following functions: 
     - CreateGame
     - Add Ship
